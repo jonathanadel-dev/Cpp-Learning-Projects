@@ -1,0 +1,8 @@
+.vs/
+x64/
+Debug/
+Release/
+*.slnx
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
