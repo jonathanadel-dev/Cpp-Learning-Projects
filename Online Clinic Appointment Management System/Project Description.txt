@@ -1,0 +1,220 @@
+. Program workflow:
+
+	. The system is built using top-down design explained in the lectures.
+
+	. Each function performs an action, and redirects to another function, and the program terminates when the user chooses to exit.
+
+	. The execution starts with the load data function and the choose function, both in the main function,
+	  and these functions will keep redirecting to other functions so the program keeps running, until the
+	  user chooses to exit (All functions explained below).
+
+	. Each function should have an option to move to the previous function (To facilitate the navigation)
+
+	. Validation:
+		. For functions containing input data from the user (id, password, doctor, day, month, etc.), we must make sure that the user
+		  enters valid data (Any numeric input field must handle non-numeric characters — clear the cin buffer and re-prompt on bad input).
+		. For functions containing choices (Press 1 for admin or 2 for patient), we must make sure that the user chooses a valid option.
+		. Make sure that each patient, doctor, or appointment IDs are unique (No two entities with the same ID). Make random IDs with a large range.
+		. Check if the array you're adding to is already full (50/50 appointments)
+		. If there is no data to display in the display functions, write "No data yet"
+
+
+
+. File Structure (In order from top to bottom):
+	. Global variables
+	. Functions Declarations
+	. Structs
+	. Patients, appointments, and admins arrays
+	. Main function
+	. Functions Definitions
+
+
+
+. All program functions:
+
+	. Load data from the file:
+		Input: -
+		Logic:
+			. Loads the arrays data
+			. Updates the counts variables
+		Redirect to: -
+
+	. choose admin or patient or terminate the program:
+		Validations:
+			. Input must be 1, 2, or 3 (exit). Reject anything else.
+		Input: number choice
+		Logic: Asks the user if they are an admin or a patient or if they want to exit the program
+		Redirect to: User's choice
+
+	. Exit:
+		Input: -
+		Logic: Save array data into the file
+		Redirect to: (Program ends)
+
+	. View doctors:
+		Parameters: isRedirect (True or False)
+		Input: -
+		Logic: Displays the list of the doctors' data
+		Redirect: -
+
+	. Admin functions:
+		. login:
+			Validations:
+				. AdminID must be a positive integer
+				. AdminID must exist in the admins array.
+				. Password must match the stored password for that ID.
+				. Don't reveal which check failed (Just say "Invalid credentials").
+			Input: adminID and password
+			Logic:
+				. Checks if this adminID exists in the array
+				. Check if the password is correct
+				. Sets the currentAdminID value
+			Redirect to: Admin dashboard function
+		. Admin dashboard:
+			Validations:
+				. Input must be a valid menu option
+			Input: number choice
+			Logic: Display all the admin functions (Add doctor - Edit doctor, etc.)
+			Redirect to: User choice
+		. Add doctor:
+			Validations:
+				. Doctors array must not be full (doctorsCount < 20).
+				. DoctorID must be unique across the doctors array.
+				. Name must not be empty.
+				. Specialization must not be empty.
+				. AvailableSlots must be a positive integer.
+				. ConsultationFee must be a positive integer.
+			Input: doctor id - name - specialization - available slots - consultation fee
+			Logic:
+				. Adds a doctor with the input data to the doctors array
+				. Increments the doctors count.
+			Redirect to: Admin dashboard
+		. Remove doctor:
+			Validations:
+				. DoctorID input must exist in the doctors array.
+				. Confirm the action with the user ("Are you sure? y/n")
+			Input: doctor id
+			Logic:
+				. View doctors (no redirections)
+				. mark the appointments linked with the doctor id as cancelled
+				. Find the doctor's index in array, shift all the indices after him one step to the left
+				. decrement the doctors count.
+			Redirect to: Admin dashboard
+		. Edit consultation fee:
+			Validations:
+				. DoctorID must exist in the doctors array.
+				. New consultation fee must be a positive integer.
+			Input: doctor id - new consultation fee
+			Logic:
+				. View doctors function
+				. Find the doctor with the doctor id
+				. Update the consultation fee
+			Redirect to: Admin dashboard
+		. View all appointments:
+			Input: -
+			Logic: Display the appointments.
+			Redirect to: Admin dashboard
+		. Mark appointment as completed:
+			Validations:
+			. AppointmentID entered must exist in the appointments array.
+			. Appointment status must currently be Booked
+			Input: appointment id
+			Logic:
+				. Display the appointments.
+				. Search with the appointment id for the appointment record
+				. Mark the status as "completed"
+			Redirect to: Admin dashboard
+		. Logout:
+			Input: -
+			Logic: Clears the currentAdminID value.
+			Redirect to: choose admin or patient
+
+	. Patient functions:
+		. Sign up:
+			Validations:
+				. Patients array must not be full.
+				. PatientID must be unique across the patients array.
+				. Name must not be empty.
+				. Password must not be empty and should be 6 characters minimum.
+				. Phone number must be numeric.
+				. Age must be a positive integer within the range 1 - 120.
+			Input: patient id - password - name - phone number - age
+			Logic:
+				. Adds a new patient to the patients array
+				. Increment patients count
+			Redirect to: Login
+		. Login:
+			Validations:
+				. PatientID must exist in the patients array.
+				. Password must match the stored password for that ID.
+				. Don't reveal which check failed (Just say "Invalid credentials").
+			Input: patient id - password
+			Logic:
+				- Check if ID exists
+				- Check password
+				- Set currentPatientID
+			Redirect to: Patient dashboard
+		. Patient dashboard:
+			Validations:
+				. Input must be a valid menu option
+			Input: number choice
+			Logic: display patient functions (book appointment, view doctors, etc.)
+			Redirect to: number choice
+		. Book appointment:
+			Validations:
+				. Appointments array must not be full (appointmentsCount < 100).
+				. Appointment ID must be unique
+				. DoctorID entered must exist in the doctors array.
+				. The chosen doctor must have availableSlots > 0.
+				. The date inputs date must be valid numbers (day/month/year).
+				. The time input must be valid (hours 1–12, minutes 0–59, timePeriod is AM or PM only).
+				. No existing booked appointment for this doctor at the same date and time (Make sure the doctor doesn't have an appointment at this time).
+				. No existing booked appointment for this patient at the same date and time (Make sure the patient doesn't have an appointment at this time).
+			Input: patient id, doctor id, appointment date and time
+			Logic:
+				. View doctors (No redirection)
+				. Check if there are available slots for this doctor
+				. Check if there is already an appointment for this doctor at the same date and time
+				. Adds appointment using the inputs
+				. Appointment id is a random value (Make sure it's unique)
+				. total cost is the consultation fee of the doctor,
+				. status = booked
+				. Increments appointments count
+				. Decrement the doctor's available slots by one
+			Redirect to: Patient dashboard
+		. View doctors:
+			Input: -
+			Logic: Display the doctors data
+			Redirect to: Patient dashboard
+		. Cancel appointment:
+			Validations:
+				. AppointmentID entered must exist in the appointments array.
+				. The appointment's patientID must match currentPatientID — a patient cannot cancel someone else's appointment.
+				. Appointment status must currently be Booked — you cannot cancel an already cancelled or completed appointment.
+			Input: appointment id
+			Logic:
+				. Display the appointments linked with the patient id
+				. Find the appointment using the appointment id, make sure it's not already canceled.
+				. Make sure the appointment's patient ID is the current patient id
+				. Mark the status as cancelled
+				. Increment the doctor's available slots by 1
+			Redirect to: Patient dashboard
+		. View appointments:
+			Input: -
+			Logic: Display the appointment with the current patient id
+			Redirect to: Patient dashboard
+		. Logout:
+			Input: -
+			Logic: clear the current user id.
+			Redirect to: choose admin or patient
+
+
+
+Work distribution:
+	1. Jonathan: load data, exit, patient sign up, view doctors
+	2. Diaa: book appointment
+	3. Omar: choose admin or patient, add doctor, mark appointment as completed
+	4. Yassa: admin dashboard, edit consultation fee, cancel appointment
+	5. Zekry: patient dashboard, remove doctor
+	6. Bavly: view all appointments, admin login, admin logout
+	7. Ellia: view appointments (patient), patient login, patient logout
