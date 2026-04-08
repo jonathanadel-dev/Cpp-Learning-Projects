@@ -5,5 +5,7 @@ using namespace std;
 
 int main()
 {
-	sortingFunction();
+	
+	cout << recursionFactorial(5);
+
 }

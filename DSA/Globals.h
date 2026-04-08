@@ -29,3 +29,25 @@ void unorderedmaps();
 
 // Sorting algorithms
 void sortingFunction();
+
+
+// Basic Maths
+int numberOfDigits(int n);
+int numberOfDigits2(int n);
+bool isArmstrong(int n);
+void printDivisors(int n);
+void printDivisors2(int n);
+bool isPrime(int n);
+bool isPrime2(int n);
+int gcd(int n1, int n2);
+
+
+// Recursion
+void print(int i, int n);
+void printAsc(int i, int n);
+void printDesc(int n);
+void printAsc2(int n);
+void printDesc2(int i, int n);
+int recursionSum(int n, int sum);
+int recursionSum2(int n);
+int recursionFactorial(int n);
