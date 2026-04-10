@@ -55,3 +55,51 @@ int recursionFactorial(int n) {
 		return n;
 	return n * recursionFactorial(n - 1);
 }
+
+void recursionArrayReverse(int arr[], int i, int size) {
+
+	int temp = arr[size];
+	arr[size] = arr[i];
+	arr[i] = temp;
+
+	if (i < size) {
+		recursionArrayReverse(arr, i + 1,  size - 1);
+	}
+
+}
+
+void recursionArrayReverse2(int arr[], int i, int size) {
+
+	if (i >= size / 2) {
+		return;
+	}
+
+	//int temp = arr[size - i - 1];
+	//arr[size - i - 1] = arr[i];
+	//arr[i] = temp;
+	swap(arr[i], arr[size - i - 1]);
+	recursionArrayReverse2(arr, i + 1, size);
+
+}
+
+bool recursionCheckIfPalindrome(int i, const string& s) {
+
+	if (i >= s.size() / 2) {
+		return true;
+	}
+
+	if (s[i] != s[s.size() - i - 1]) {
+		return false;
+	}
+
+	return recursionCheckIfPalindrome(i + 1, s);
+
+}
+
+int recursionFib(int n) {
+
+	if (n == 0) return 0;
+	if (n == 1) return 1;
+	return recursionFib(n - 1) + recursionFib(n - 2);
+
+}

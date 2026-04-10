@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 // Loops
 void print7(int n);
@@ -51,3 +52,7 @@ void printDesc2(int i, int n);
 int recursionSum(int n, int sum);
 int recursionSum2(int n);
 int recursionFactorial(int n);
+void recursionArrayReverse(int arr[], int i, int size);
+void recursionArrayReverse2(int arr[], int i, int size);
+bool recursionCheckIfPalindrome(int i, const std::string& s);
+int recursionFib(int n);

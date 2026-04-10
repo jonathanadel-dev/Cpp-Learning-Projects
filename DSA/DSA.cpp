@@ -6,6 +6,6 @@ using namespace std;
 int main()
 {
 	
-	cout << recursionFactorial(5);
+	cout << recursionFib(5);
 
 }
