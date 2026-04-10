@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+using namespace std;
+
 
 // Loops
 void print7(int n);
@@ -11,6 +13,7 @@ void print12(int n);
 void print13(int n);
 void print14(int n);
 void print17(int n);
+
 
 // STL
 void pairs();
@@ -54,5 +57,12 @@ int recursionSum2(int n);
 int recursionFactorial(int n);
 void recursionArrayReverse(int arr[], int i, int size);
 void recursionArrayReverse2(int arr[], int i, int size);
-bool recursionCheckIfPalindrome(int i, const std::string& s);
+bool recursionCheckIfPalindrome(int i, const string& s);
 int recursionFib(int n);
+
+
+// Hashing
+void hashingArray(int a[], int size);
+void hashingCharacters(string s);
+void hashingMap(int a[], int size);
+void hashingCharacterMap(string s);
