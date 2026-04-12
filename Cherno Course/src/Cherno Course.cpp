@@ -6,6 +6,7 @@ using namespace std;
 int main()
 {
 
-	string name = "";
+	const char* name = "Jonathan";
+	cout << name;
 
 }

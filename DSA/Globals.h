@@ -66,3 +66,12 @@ void hashingArray(int a[], int size);
 void hashingCharacters(string s);
 void hashingMap(int a[], int size);
 void hashingCharacterMap(string s);
+
+
+// Sorting
+void selectionSort(int a[], int size);
+void bubbleSort(int a[], int size);
+void bubbleSort2(int a[], int size);
+void insertionSort(int a[], int size);
+void mergeSort(int a[], int left, int right);
+void quickSort(int a[], int left, int right);
