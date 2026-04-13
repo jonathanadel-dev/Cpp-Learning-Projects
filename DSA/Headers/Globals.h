@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 using namespace std;
 
 
@@ -75,3 +76,9 @@ void bubbleSort2(int a[], int size);
 void insertionSort(int a[], int size);
 void mergeSort(int a[], int left, int right);
 void quickSort(int a[], int left, int right);
+
+
+// Arrays
+int greatestElementInTheArray(int a[], int size);
+vector<int> secondGreatestElementInTheArray(int a[], int size);
+void removeDuplicates(int a[], int size);
