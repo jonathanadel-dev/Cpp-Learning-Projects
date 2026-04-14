@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <set>
 using namespace std;
 
 
@@ -82,3 +83,7 @@ void quickSort(int a[], int left, int right);
 int greatestElementInTheArray(int a[], int size);
 vector<int> secondGreatestElementInTheArray(int a[], int size);
 void removeDuplicates(int a[], int size);
+void leftRotateAnArrayByOne(int a[], int size);
+void leftRotateAnArrayByK(int a[], int size, int k);
+void movingZerosToTheEnd(int a[], int size);
+set<int> unionOfTwoArrays(int a1[], int a2[], int size1, int size2);
