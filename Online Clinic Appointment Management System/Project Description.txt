@@ -218,3 +218,10 @@ Work distribution:
 	5. Zekry: patient dashboard, remove doctor
 	6. Bavly: view all appointments, admin login, admin logout
 	7. Ellia: view appointments (patient), patient login, patient logout
+
+
+
+
+Changes made:
+1. Ids in all modules will be incremented (Starting from 1, then 2, 3..)
+2. Added a Patient Login Or SignUp function
