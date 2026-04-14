@@ -210,18 +210,8 @@
 
 
 
-Work distribution:
-	1. Jonathan: load data, exit, patient sign up, view doctors
-	2. Diaa: book appointment
-	3. Omar: choose admin or patient, add doctor, mark appointment as completed
-	4. Yassa: admin dashboard, edit consultation fee, cancel appointment
-	5. Zekry: patient dashboard, remove doctor
-	6. Bavly: view all appointments, admin login, admin logout
-	7. Ellia: view appointments (patient), patient login, patient logout
-
-
 
 
 Changes made:
-1. Ids in all modules will be incremented (Starting from 1, then 2, 3..)
+1. Ids in all modules will be incremented
 2. Added a Patient Login Or SignUp function
