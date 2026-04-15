@@ -137,7 +137,7 @@ void movingZerosToTheEnd(int a[], int size) {
 
 }
 
-set<int> unionOfTwoArrays(int a1[], int a2[], int size1, int size2) {
+void unionOfTwoArrays(int a[], int size, int a1[], int a2[], int size1, int size2) {
 
 	// Brute solution
 	auto bruteSolution = [&]() {
@@ -155,6 +155,95 @@ set<int> unionOfTwoArrays(int a1[], int a2[], int size1, int size2) {
 	};
 
 
+	// Optimal solution
+	auto optimalSolution = [&]() {
+
+		int first = 0, second = 0;
+		int index = 0;
+
+		while (first < size1 && second < size2) {
+			if (a1[first] <= a2[second]) {
+				if (index == 0 || a[index - 1] != a1[first]) {
+					a[index++] = a1[first];
+				}
+				first++;
+			}
+			else {
+				if (index == 0 || a[index - 1] != a2[second]) {
+					a[index++] = a2[second];
+				}
+				second++;
+			}
+		}
+
+		while (first < size1) {
+			if (index == 0 || a[index - 1] != a1[first]) {
+				a[index++] = a1[first];
+			}
+			first++;
+		}
+
+		while (second < size2) {
+			if (index == 0 || a[index - 1] != a2[second]) {
+				a[index++] = a2[second];
+			}
+			second++;
+		}
+
+	};
+
+	return optimalSolution();
+
+}
+
+vector<int> intersectionOfTwoArrays(vector<int> v1, vector<int> v2) {
+
+	auto bruteSolution = [&]() {
+
+		vector<int> intersection;
+
+		for (int i = 0; i < v1.size(); i++) {
+			for (int j = 0; j < v2.size(); j++) {
+				if (v1[i] == v2[j]) {
+					//if (v1[i] == v2[j] && (intersection.empty() || intersection.back() != v1[i])) {
+					intersection.push_back(v1[i]);
+					break;
+				}
+			}
+		}
+
+		return intersection;
+
+	};
+
+	auto optimalSolution = [&]() {
+
+		vector<int> intersection;
+		int i = 0, j = 0, n1 = v1.size(), n2 = v2.size();
+
+		while (i < n1 && j < n2) {
+
+			if (v1[i] == v2[j]) {
+				if(intersection.empty() || v1[i] != intersection.back()) {
+					intersection.push_back(v1[i]);
+				}
+				i++;
+				j++;
+			}
+			else {
+				if (v1[i] < v2[j]) {
+					i++;
+				}
+				else {
+					j++;
+				}
+			}
+
+		}
+
+		return intersection;
+
+	};
 
 	return bruteSolution();
 

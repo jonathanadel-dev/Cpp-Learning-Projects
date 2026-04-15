@@ -2,12 +2,11 @@
 #include <string>
 using namespace std;
 
+
+// Declarations
 void addTask(string*& tasks, int& count, int& capacity);
-
 void completeTask(string* tasks, int& count);
-
 void getCurrentTask(string* tasks, int count);
-
 void viewTasks(string* tasks, int count);
 
 int main()
@@ -83,6 +82,8 @@ int main()
 
 }
 
+
+// Definitions
 void addTask(string*& tasks, int& count, int& capacity) {
 
     string task;
@@ -101,7 +102,6 @@ void addTask(string*& tasks, int& count, int& capacity) {
     tasks[count++] = task;
 
 }
-
 void completeTask(string* tasks, int &count) {
 
     if (count == 0) {
@@ -113,7 +113,6 @@ void completeTask(string* tasks, int &count) {
     }
 
 }
-
 void getCurrentTask(string* tasks, int count) {
     if (count == 0) {
         cout << "No current task" << endl;
@@ -121,7 +120,6 @@ void getCurrentTask(string* tasks, int count) {
     }
     cout << "Your current task: " << tasks[count - 1] << endl;
 }
-
 void viewTasks(string* tasks, int count) {
     cout << "Your tasks: " << endl;
     for (int i = 0; i < count; i++) {
