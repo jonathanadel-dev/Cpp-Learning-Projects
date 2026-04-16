@@ -88,3 +88,6 @@ void leftRotateAnArrayByK(int a[], int size, int k);
 void movingZerosToTheEnd(int a[], int size);
 void unionOfTwoArrays(int a[], int size, int a1[], int a2[], int size1, int size2);
 vector<int> intersectionOfTwoArrays(vector<int> v1, vector<int> v2);
+int findMissingNumberInAnArray(vector<int>);
+int findTheLongestConsecutiveOnes(vector<int> v);
+int findTheElementThatAppearsOnce(vector<int> v);

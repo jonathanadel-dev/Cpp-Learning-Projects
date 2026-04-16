@@ -248,3 +248,97 @@ vector<int> intersectionOfTwoArrays(vector<int> v1, vector<int> v2) {
 	return bruteSolution();
 
 }
+
+int findMissingNumberInAnArray(vector<int> v) {
+
+	auto bruteSoltion = [&]() {
+
+		for (int i = 1; i <= v.size(); i++) {
+			int lag = 0;
+			for (int j = 0; j < v.size(); j++) {
+				if (i == v[j]) {
+					lag = 1;
+					break;
+				}
+			}
+
+			if (lag == 0) {
+				return i;
+			}
+		}
+
+
+	};
+
+	auto betterSoltion = [&]() {
+
+		vector<int> freq(v.size() + 2, 0);
+
+		for (int i = 0; i < v.size(); i++) {
+			freq[v[i]] = 1;
+		}
+
+		for (int i = 1; i < freq.size(); i++) {
+			if (freq[i] == 0) {
+				return i;
+			}
+		}
+
+	};
+
+	auto optimalSolution = [&]() {
+
+		auto sum = [&]() {
+
+			int expectedSum = ((v.size() + 1) * (v.size() + 2)) / 2;
+			int actualSum = 0;
+
+			for (int i = 0; i < v.size(); i++) {
+				actualSum += v[i];
+			}
+
+			return expectedSum - actualSum;
+
+		};
+
+		return sum();
+
+	};
+
+	return optimalSolution();
+
+}
+
+int findTheLongestConsecutiveOnes(vector<int> v) {
+
+	auto optimalSolution = [&]() {
+
+		int count = 0, greatestCount = 0;
+
+		for (int i = 0; i < v.size(); i++) {
+			if (v[i] == 0) {
+				count = 0;
+			}
+			else {
+				count++;
+				if (count > greatestCount) {
+					greatestCount = count;
+				}
+			}
+		}
+
+		return greatestCount;
+
+	};
+
+	return optimalSolution();
+
+}
+
+int findTheElementThatAppearsOnce(vector<int> v) {
+
+	auto bruteSolution = [&]() {
+
+	};
+
+}
