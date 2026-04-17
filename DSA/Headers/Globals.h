@@ -90,4 +90,4 @@ void unionOfTwoArrays(int a[], int size, int a1[], int a2[], int size1, int size
 vector<int> intersectionOfTwoArrays(vector<int> v1, vector<int> v2);
 int findMissingNumberInAnArray(vector<int>);
 int findTheLongestConsecutiveOnes(vector<int> v);
-int findTheElementThatAppearsOnce(vector<int> v);
+int longestSubArrayWithLengthK(vector<int> v, int k);

@@ -335,10 +335,86 @@ int findTheLongestConsecutiveOnes(vector<int> v) {
 
 }
 
-int findTheElementThatAppearsOnce(vector<int> v) {
+int longestSubArrayWithLengthK(vector<int> v, int k) {
 
 	auto bruteSolution = [&]() {
 
+		int maxLength = 0;
+
+		for (int i = 0; i < v.size(); i++) {
+			for (int j = i; j < v.size(); j++) {
+				int sum = 0;
+				for (int k = i; k <= j; k++) {
+					sum += v[k];
+				}
+				if (sum == k) {
+					if (j - i + 1 > maxLength) {
+						maxLength = j - i + 1;
+					}
+				}
+			}
+		}
+
+		return maxLength;
+
 	};
+
+	auto betterSolution = [&]() {
+
+		int maxLength = 0, sum = 0;
+
+		for (int i = 0; i < v.size(); i++) {
+
+			sum += v[i];
+			v[i] = sum;
+
+			if (v[i] == k) {
+				maxLength = i + 1;
+			}
+
+			for (int j = 0; j <= i; j++) {
+
+				if (v[i] - v[j] == k) {
+					int length = i - j;
+					if (length > maxLength) {
+						maxLength = length;
+					}
+					break;
+				}
+
+			}
+
+		}
+
+		return maxLength;
+
+	};
+
+	auto optimalSolution = [&]() {
+
+		int left = 0, sum = 0, maxLength = 0;
+
+		for (int i = 0; i < v.size(); i++) {
+
+			sum += v[i];
+
+			if(sum > k) {
+				sum -= v[left];
+				left++;
+			}
+
+			if (sum == k) {
+				if (i - left + 1 > maxLength) {
+					maxLength = i - left + 1;
+				}
+			}
+
+		}
+
+		return maxLength;
+
+	};
+
+	return optimalSolution();
 
 }
