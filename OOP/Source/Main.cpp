@@ -18,11 +18,6 @@ public:
 int main()
 {
 
-    Animal* a;
-    Dog d;
-
-    a = &d;
-
-    a->makeSound();
+    cout << "Something";
 
 }

@@ -1,0 +1,125 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+using namespace std;
+
+
+// Global Variables
+int currentAdminID = -1,
+currentPatientID = -1,
+patientsCount = 2,
+doctorsCount = 3,
+adminsCount = 1,
+appointmentsCount = 0;
+
+
+// Functions Declarations
+void loadData();
+void chooseAdminOrPatient();
+void terminateTheProgram();
+
+void viewDoctors(bool isRedirect);
+
+void adminLogin();
+void adminDashboard();
+void addDoctor();
+void removeDoctor();
+void editConsultationFee();
+void viewAllAppointments();
+void markAppointmentAsCompleted();
+void adminLogout();
+
+void patientSignUp();
+void patientLogin();
+void patientDashboard();
+void bookAppointment();
+void cancelAppointment();
+void viewAppointments();
+void patientLogout();
+
+
+// Structs
+struct Date {
+	string day;
+	string month;
+	string year;
+};
+struct Time {
+	string hours;
+	string minutes;
+	string timePeriod;
+};
+struct Patient {
+	int patientID;
+	string name;
+	string password;
+	string phoneNumber;
+	int age;
+};
+struct Doctor {
+	int doctorID;
+	string name;
+	string specialization;
+	int availableSlots;
+	int consultationFee;
+};
+struct Appointment {
+	int appointmentID;
+	int patientID;
+	int doctorID;
+	Date appointmentDate;
+	Time appointmentTime;
+	string status;
+	int totalCost;
+};
+struct Admin {
+	int adminID;
+	string name;
+	string password;
+};
+
+
+// Arrays
+Patient patients[50];
+Doctor doctors[20];
+Appointment appointments[100];
+Admin admins[2];
+
+
+// Main function
+int main() {
+	loadData();
+	chooseAdminOrPatient();
+}
+
+
+// Functions definition
+void loadData() {
+	string name;
+	cout << "Enter your name: ";
+	getline(cin, name);
+	ofstream file("data.txt");
+	file << name;
+	file.close();
+};
+void chooseAdminOrPatient() {};
+void terminateTheProgram() {};
+
+void viewDoctors(bool isRedirect) {};
+
+void adminLogin() {};
+void adminDashboard() {};
+void addDoctor() {};
+void removeDoctor() {};
+void editConsultationFee() {};
+void viewAllAppointments() {};
+void markAppointmentAsCompleted() {};
+void adminLogout() {};
+
+void patientSignUp() {};
+void patientLogin() {};
+void patientDashboard() {};
+void bookAppointment() {};
+void cancelAppointment() {};
+void viewAppointments() {};
+void patientLogout() {};

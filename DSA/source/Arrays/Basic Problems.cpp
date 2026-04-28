@@ -398,7 +398,7 @@ int longestSubArrayWithLengthK(vector<int> v, int k) {
 
 			sum += v[i];
 
-			if(sum > k) {
+			while (sum > k && left <= i) {
 				sum -= v[left];
 				left++;
 			}
