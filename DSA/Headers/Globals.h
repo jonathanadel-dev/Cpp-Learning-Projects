@@ -79,7 +79,7 @@ void mergeSort(int a[], int left, int right);
 void quickSort(int a[], int left, int right);
 
 
-// Arrays
+// Basic Arrays problems
 int greatestElementInTheArray(int a[], int size);
 vector<int> secondGreatestElementInTheArray(int a[], int size);
 void removeDuplicates(int a[], int size);
@@ -91,3 +91,9 @@ vector<int> intersectionOfTwoArrays(vector<int> v1, vector<int> v2);
 int findMissingNumberInAnArray(vector<int>);
 int findTheLongestConsecutiveOnes(vector<int> v);
 int longestSubArrayWithLengthK(vector<int> v, int k);
+
+
+// Medium array problems
+vector <int> twoSum(vector <int> v, int target);
+void sortArrayOfZerosOnesAndTwos(vector <int> v);
+int majorityElement(vector <int> nums);
