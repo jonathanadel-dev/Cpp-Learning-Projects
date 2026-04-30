@@ -127,3 +127,68 @@ int majorityElement(vector <int> nums) {
     return optimalSolution();
 
 }
+
+
+// Maximum subarray
+int maximumSubarray(vector<int> nums) {
+
+    auto bruteSolution = [&]() {
+        
+        int maxSum = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i; j < nums.size(); j++) {
+                int sum = 0;
+                for (int k = i; k <= j; k++) {
+                    sum += nums[k];
+                    if (sum > maxSum) {
+                        maxSum = sum;
+                    }
+                }
+            }
+        }
+
+        return maxSum;
+    
+    };
+
+    auto betterSolution = [&]() {
+
+        int maxSum = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            int sum = 0;
+            for (int j = i; j < nums.size(); j++) {
+                sum += nums[j];
+                if (sum > maxSum) {
+                    maxSum = sum;
+                }
+            }
+        }
+
+        return maxSum;
+
+    };
+
+    // Kadane's algorithm
+    auto optimalSolution = [&]() {
+
+        int maxSum = -100000000, sum = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+
+            sum += nums[i];
+
+            if (sum > maxSum) maxSum = sum;
+
+            if (sum < 0) sum = 0;
+
+        }
+
+        return maxSum;
+
+    };
+
+    return optimalSolution();
+
+}

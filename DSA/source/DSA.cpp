@@ -9,7 +9,7 @@ int main()
 	vector<int> v = { 1, 0, 2, 0, 0, 2, 0, 1, 0, 0, 2, 0 };
 
 	//vector <int> nums = sortArrayOfZerosOnesAndTwos(v);
-	cout << majorityElement(v);
+	cout << maximumSubarray(v);
 
 	//for (auto i : v) {
 	//	cout << i << " ";
