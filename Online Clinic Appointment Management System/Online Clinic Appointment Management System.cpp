@@ -85,7 +85,6 @@ void cancelAppointment();
 void viewAppointments();
 void patientLogout();
 void space();
-void updateAppointmentStatus(Appointment* appointment, string newStatus);
 void readValidInt(string prompt, int& value, int min, int max);
 bool isArrayFull(int count, int maxSize);
 bool hasDoctorTimeConflict(int doctorID, Date date, Time time);
@@ -111,9 +110,6 @@ int main() {
 // Helper Function Definitions
 void space() {
     cout << "\n" << string(40, '-') << "\n";
-}
-void updateAppointmentStatus(Appointment* appointment, string newStatus) {
-    appointment->status = newStatus;
 }
 void readValidInt(string prompt, int& value, int min, int max) {
     while (true) {
@@ -220,7 +216,7 @@ void loadData() {
     admins[0] = { 9999, "Admin", "admin123" };
 
 
-    // Creating/Opening the file
+    // Opening the file
     ifstream file("data.txt");
     if (!file.is_open()) return;
 
@@ -290,7 +286,7 @@ void loadData() {
 }
 void terminateTheProgram() {
 
-    // Accessing the file
+    // Creating / Opening the file
     ofstream file("data.txt");
 
 
@@ -593,7 +589,7 @@ void removeDoctor() {
     // Canceling all booked appointments for this doctor
     for (int i = 0; i < appointmentsCount; i++) {
         if (appointments[i].doctorID == id && appointments[i].status == "Booked") {
-            updateAppointmentStatus(&appointments[i], "Cancelled");
+            appointments[i].status = "Cancelled";
         }
     }
 
@@ -658,7 +654,7 @@ void viewAllAppointments() {
     cout << "\n\t\t(Appointments List)\n\n";
     cout << string(82, '-') << "\n";
     cout << left
-        << setw(8) << "Appt. ID"
+        << setw(8) << "Appt ID"
         << setw(12) << "Patient ID"
         << setw(12) << "Doctor ID"
         << setw(14) << "Date"
@@ -758,7 +754,7 @@ void markAppointmentAsCompleted() {
 
 
     // Updating appointment status
-    updateAppointmentStatus(&appointments[idx], "Completed");
+    appointments[idx].status = "Completed";
     cout << "\nAppointment marked as completed!\n";
     adminDashboard();
 
@@ -792,7 +788,6 @@ void patientLoginOrSignUp() {
 
 }
 void patientSignUp() {
-    
 
     // Function text
     space();
@@ -1140,7 +1135,7 @@ void cancelAppointment() {
 
 
     // Updating appointment's status
-    updateAppointmentStatus(&appointments[idx], "Cancelled");
+    appointments[idx].status = "Cancelled";
 
 
     // Increasing doctor's avaiable slots

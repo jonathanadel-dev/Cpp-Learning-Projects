@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <queue>
 #include <algorithm>
 using namespace std;
 
@@ -192,3 +193,64 @@ int maximumSubarray(vector<int> nums) {
     return optimalSolution();
 
 }
+
+
+// Rearrange array elements by sign
+vector<int> rearrangeArrayElementsBySign(vector<int> nums) {
+
+    auto bruteSolution = [&]() {
+
+        vector<int> ans;
+        queue<int> positiveInts, negativeInts;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > 0) {
+                positiveInts.push(nums[i]);
+            }
+            else {
+                negativeInts.push(nums[i]);
+            }
+        }
+
+        for (int i = 0; i < nums.size() / 2; i++) {
+            ans.emplace_back(positiveInts.front());
+            positiveInts.pop();
+            ans.emplace_back(negativeInts.front());
+            negativeInts.pop();
+        }
+
+        return ans;
+
+    };
+
+    auto optimalSolution = [&]() {
+
+        vector<int> ans(nums.size(), 0);
+        int posI = 0, negI = 1;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] > 0) {
+                ans[posI] = nums[i];
+                posI += 2;
+            }
+            else {
+                ans[negI] = nums[i];
+                negI += 2;
+            }
+        }
+
+        return ans;
+
+     };
+
+    return optimalSolution();
+
+}
+
+
+// Next permutation
+void nextPermutation(vector <int> v) {
+
+    
+
+};

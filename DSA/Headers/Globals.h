@@ -98,3 +98,5 @@ vector <int> twoSum(vector <int> v, int target);
 void sortArrayOfZerosOnesAndTwos(vector <int> v);
 int majorityElement(vector <int> nums);
 int maximumSubarray(vector<int> nums);
+vector<int> rearrangeArrayElementsBySign(vector<int> nums);
+void nextPermutation(vector <int> v);

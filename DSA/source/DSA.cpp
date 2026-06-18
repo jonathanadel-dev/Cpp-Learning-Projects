@@ -1,15 +1,19 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "../Headers/Globals.h"
 using namespace std;
 
 int main()
 {
 
-	vector<int> v = { 1, 0, 2, 0, 0, 2, 0, 1, 0, 0, 2, 0 };
+	vector<int> v = { 3, 1, 2 };
 
-	//vector <int> nums = sortArrayOfZerosOnesAndTwos(v);
-	cout << maximumSubarray(v);
+	cout << *(v.begin() + 2);
+
+	//sort(v.end() - 3, v.end());
+
+	//nextPermutation(v);
 
 	//for (auto i : v) {
 	//	cout << i << " ";
