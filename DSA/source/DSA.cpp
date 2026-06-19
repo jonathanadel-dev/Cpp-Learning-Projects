@@ -7,16 +7,12 @@ using namespace std;
 int main()
 {
 
-	vector<int> v = { 3, 1, 2 };
+	vector<int> nums = { 10, 22, 12, 3, 0, 6 };
 
-	cout << *(v.begin() + 2);
+	vector <int> leaders = leadersInAnArray(nums);
 
-	//sort(v.end() - 3, v.end());
-
-	//nextPermutation(v);
-
-	//for (auto i : v) {
-	//	cout << i << " ";
-	//}
+	for (auto i : leaders) {
+		cout << i << " ";
+	}
 
 }

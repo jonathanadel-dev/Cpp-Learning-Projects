@@ -249,8 +249,60 @@ vector<int> rearrangeArrayElementsBySign(vector<int> nums) {
 
 
 // Next permutation
-void nextPermutation(vector <int> v) {
+void nextPermutation(vector <int> nums) {
 
-    
+    if (nums.size() <= 1) {
+        return;
+    }
+
+    int left = -1;
+
+    for (int i = nums.size() - 1; i > 0; i--) {
+        if (nums[i] > nums[i - 1]) {
+            left = i - 1;
+            break;
+        }
+    }
+
+    if (left == -1) {
+
+        sort(nums.begin(), nums.end());
+
+    }
+    else {
+
+        // Swapping the two numbers
+        for (int i = nums.size() - 1; i > left; i--) {
+            if (nums[i] > nums[left]) {
+                int temp = nums[left];
+                nums[left] = nums[i];
+                nums[i] = temp;
+                break;
+            }
+        }
+
+
+        // Sorting the after segment
+        sort(nums.begin() + left + 1, nums.end());
+
+    }
 
 };
+
+
+// Leaders in an array
+vector <int> leadersInAnArray(vector <int> nums) {
+
+    int greatest = INT_MIN;
+    vector <int> leaders;
+
+    for (int i = nums.size() - 1; i >= 0; i--) {
+        if (nums[i] > greatest) {
+            leaders.push_back(nums[i]);
+            greatest = nums[i];
+        }
+    }
+
+    return leaders;
+
+}
