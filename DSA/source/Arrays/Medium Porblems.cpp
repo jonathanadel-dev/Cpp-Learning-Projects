@@ -2,6 +2,7 @@
 #include <vector>
 #include <map>
 #include <queue>
+#include <list>
 #include <algorithm>
 using namespace std;
 
@@ -304,5 +305,34 @@ vector <int> leadersInAnArray(vector <int> nums) {
     }
 
     return leaders;
+
+}
+
+
+// Longest consecutive sequence
+int longestConsecutiveSequence(vector<int> nums) {
+
+    map<int, int> hashMap{};
+    int length = 0, lastIndex = 0, maxLength = 0;
+
+    for (int i = 0; i < nums.size(); i++) {
+        hashMap[nums[i]] = 1;
+    }
+    
+    for (auto i : hashMap) {
+        if (i.first > lastIndex + 1) {
+            length = 1;
+        }
+        else {
+            length++;
+            if (length > maxLength) {
+                maxLength = length;
+            }
+        }
+
+        lastIndex = i.first;
+    }
+
+    return maxLength;
 
 }

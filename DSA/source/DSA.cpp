@@ -7,12 +7,12 @@ using namespace std;
 int main()
 {
 
-	vector<int> nums = { 10, 22, 12, 3, 0, 6 };
+	vector<int> nums = { 0,3,7,2,5,8,4,6,0,1 };
 
-	vector <int> leaders = leadersInAnArray(nums);
+	cout << longestConsecutiveSequence(nums);
 
-	for (auto i : leaders) {
-		cout << i << " ";
-	}
+	//for (auto i : leaders) {
+	//	cout << i << " ";
+	//}
 
 }
