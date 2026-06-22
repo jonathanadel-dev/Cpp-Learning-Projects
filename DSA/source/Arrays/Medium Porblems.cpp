@@ -3,6 +3,7 @@
 #include <map>
 #include <queue>
 #include <list>
+#include <set>
 #include <algorithm>
 using namespace std;
 
@@ -334,5 +335,79 @@ int longestConsecutiveSequence(vector<int> nums) {
     }
 
     return maxLength;
+
+}
+
+
+// Set matrix zeros
+void setMatrixZeros(vector<vector <int>> matrix) {
+
+    set<int> rows = {};
+    set<int> cols = {};
+
+    for (int i = 0; i < matrix.size(); i++) {
+        for (int j = 0; j < matrix[0].size(); j++) {
+            if (matrix[i][j] == 0) {
+                rows.emplace(i);
+                cols.emplace(j);
+            }
+        }
+    }
+
+    for (auto i : rows) {
+        for (int j = 0; j < matrix[0].size(); j++) {
+            matrix[i][j] = 0;
+        }
+    }
+
+    for (auto i : cols) {
+        for (int j = 0; j < matrix.size(); j++) {
+            matrix[j][i] = 0;
+        }
+    }
+
+}
+
+
+// Rotate matrix brute solution
+vector<vector <int>> rotateMatrixBruteSolution(vector<vector<int>> matrix) {
+
+    int n = matrix.size();
+
+    vector<vector <int>> newMat(n, vector<int>(n));
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            int newJ = (n - 1) - i;
+            newMat[j][newJ] = matrix[i][j];
+        }
+    }
+
+    return newMat;
+
+}
+
+void rotateMatrixOptimalSolution(vector<vector<int>> &matrix) {
+
+    int n = matrix.size();
+
+    // Transposing the matrix
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            int temp = matrix[i][j];
+            matrix[i][j] = matrix[j][i];
+            matrix[j][i] = temp;
+        }
+    }
+
+
+    // Reversing the rows
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n/2; j++) {
+            int temp = matrix[i][j];
+            matrix[i][j] = matrix[i][n-j-1];
+            matrix[i][n-j-1] = temp;
+        }
+    }
 
 }

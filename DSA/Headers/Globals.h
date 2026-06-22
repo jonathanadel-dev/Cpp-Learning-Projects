@@ -102,3 +102,6 @@ vector<int> rearrangeArrayElementsBySign(vector<int> nums);
 void nextPermutation(vector <int> v);
 vector <int> leadersInAnArray(vector <int> nums);
 int longestConsecutiveSequence(vector<int> nums);
+void setMatrixZeros(vector<vector <int>> matrix);
+vector<vector <int>> rotateMatrixBruteSolution(vector<vector<int>> matrix);
+void rotateMatrixOptimalSolution(vector<vector<int>> &matrix);
