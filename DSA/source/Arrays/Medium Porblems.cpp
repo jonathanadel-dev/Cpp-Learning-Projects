@@ -387,6 +387,8 @@ vector<vector <int>> rotateMatrixBruteSolution(vector<vector<int>> matrix) {
 
 }
 
+
+// Rotate matrix optimal solution
 void rotateMatrixOptimalSolution(vector<vector<int>> &matrix) {
 
     int n = matrix.size();
@@ -409,5 +411,61 @@ void rotateMatrixOptimalSolution(vector<vector<int>> &matrix) {
             matrix[i][n-j-1] = temp;
         }
     }
+
+}
+
+
+// Spiral matrix
+vector<int> spiralMatrix(vector<vector<int>> matrix) {
+
+    vector<int> nums;
+    char direction = 'r';
+    int row = 0,
+        col = 0,
+        m = matrix.size(),
+        n = matrix[0].size(),
+        currentTurn = 0,
+        noOfRuns = 0;
+
+    while (noOfRuns < m * n) {
+
+        nums.push_back(matrix[row][col]);
+
+        if (row == currentTurn && col == n - currentTurn - 1 && direction == 'r') {
+            direction = 'd';
+        }
+        else if (row == m - currentTurn - 1 && col == n - currentTurn - 1 && direction == 'd') {
+            direction = 'l';
+        }
+        else if (row == currentTurn && col == currentTurn - 1 && direction == 'u') {
+            direction = 'r';
+        }
+        else if (row == m - currentTurn - 1 && col == currentTurn && direction == 'l') {
+            direction = 'u';
+            currentTurn++;
+        }
+
+        switch (direction) {
+        case 'r':
+            col++;
+            break;
+        case 'd':
+            row++;
+            break;
+        case 'l':
+            col--;
+            break;
+        case 'u':
+            row--;
+            break;
+        default:
+            cout << "Invalid direction";
+        };
+
+        noOfRuns++;
+
+    }
+
+    return nums;
 
 }
