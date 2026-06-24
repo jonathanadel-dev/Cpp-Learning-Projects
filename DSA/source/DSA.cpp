@@ -8,16 +8,14 @@ using namespace std;
 int main()
 {
 
-	vector<vector <int>> matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+	//vector<vector <int>> matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+	vector<int> nums = {-1, -1, 1};
 
-	vector<int> ans = spiralMatrix(matrix);
+	cout << numberOfSubarraysWithSumK(nums, 0);
 
 	//for (auto i : test) {
 	//	cout << i << " ";
 	//}
 
-	for (int i = 0; i < ans.size(); i++) {
-		cout << ans[i] << " ";
-	}
 
 }

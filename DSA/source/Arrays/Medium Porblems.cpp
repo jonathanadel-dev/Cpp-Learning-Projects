@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include <queue>
 #include <list>
 #include <set>
@@ -429,8 +430,11 @@ vector<int> spiralMatrix(vector<vector<int>> matrix) {
 
     while (noOfRuns < m * n) {
 
+        // Adding the number
         nums.push_back(matrix[row][col]);
 
+
+        // Switching directions
         if (row == currentTurn && col == n - currentTurn - 1 && direction == 'r') {
             direction = 'd';
         }
@@ -445,6 +449,8 @@ vector<int> spiralMatrix(vector<vector<int>> matrix) {
             currentTurn++;
         }
 
+
+        // Moving the pointer
         switch (direction) {
         case 'r':
             col++;
@@ -462,10 +468,32 @@ vector<int> spiralMatrix(vector<vector<int>> matrix) {
             cout << "Invalid direction";
         };
 
+
+        // Incrementing the number of runs
         noOfRuns++;
 
     }
 
     return nums;
+
+}
+
+
+// Number of subarrays with sum k
+int numberOfSubarraysWithSumK(vector<int> nums, int k) {
+
+    unordered_map<int, int> prefixSums;
+    prefixSums[0] = 1;
+    int sum = 0, n = 0;
+
+    for (int i = 0; i < nums.size(); i++) {
+        sum += nums[i];
+        if (prefixSums.count(sum - k)) {
+            n += prefixSums[sum - k];
+        }
+        prefixSums[sum]++;
+    }
+
+    return n;
 
 }

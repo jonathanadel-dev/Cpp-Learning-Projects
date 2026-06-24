@@ -106,3 +106,4 @@ void setMatrixZeros(vector<vector <int>> matrix);
 vector<vector <int>> rotateMatrixBruteSolution(vector<vector<int>> matrix);
 void rotateMatrixOptimalSolution(vector<vector<int>> &matrix);
 vector<int> spiralMatrix(vector<vector<int>> matrix);
+int numberOfSubarraysWithSumK(vector<int> nums, int k);
