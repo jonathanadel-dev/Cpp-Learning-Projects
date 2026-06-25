@@ -9,13 +9,14 @@ int main()
 {
 
 	//vector<vector <int>> matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-	vector<int> nums = {-1, -1, 1};
 
-	cout << numberOfSubarraysWithSumK(nums, 0);
+	vector<vector<int>> pascals = pascalsTriangle(5);
 
-	//for (auto i : test) {
-	//	cout << i << " ";
-	//}
-
+	for (auto i : pascals) {
+		for (auto j : i) {
+			cout << j << " ";
+		}
+		cout << endl;
+	}
 
 }
