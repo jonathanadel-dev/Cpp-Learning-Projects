@@ -8,15 +8,12 @@ using namespace std;
 int main()
 {
 
-	//vector<vector <int>> matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+	vector<int> nums = { 3, 2, 3 };
 
-	vector<vector<int>> pascals = pascalsTriangle(5);
+	vector<int> majs = majorityElementTwo(nums);
 
-	for (auto i : pascals) {
-		for (auto j : i) {
-			cout << j << " ";
-		}
-		cout << endl;
+	for (int i = 0; i < majs.size(); i++) {
+		cout << majs[i] << " ";
 	}
 
 }

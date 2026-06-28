@@ -29,3 +29,77 @@ vector<vector<int>> pascalsTriangle(int n) {
     return nums;
 
 };
+
+
+// Majority element two
+vector<int> majorityElementTwo(vector<int> nums) {
+
+    auto betterSolution = [&]() {
+
+        int n = nums.size() / 3;
+        vector<int> ans;
+        unordered_map<int, int> freq;
+
+        for (int i = 0; i < nums.size(); i++) {
+            freq[nums[i]]++;
+        }
+
+        for (auto i : freq) {
+            if (i.second > n) {
+                ans.push_back(i.first);
+            }
+        }
+
+        return ans;
+
+        };
+
+    auto optimalSolution = [&]() {
+
+        vector<int> ans;
+        int elOne = INT_MIN, countOne = 0, elTwo = INT_MIN, countTwo = 0, n = nums.size() / 3;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (countOne == 0 && nums[i] != elTwo) {
+                countOne = 1;
+                elOne = nums[i];
+            }
+            else if (countTwo == 0 && nums[i] != elOne) {
+                countTwo = 1;
+                elTwo = nums[i];
+            }
+            else if (nums[i] == elOne) {
+                countOne++;
+            }
+            else if (nums[i] == elTwo) {
+                countTwo++;
+            }
+            else {
+                countOne--;
+                countTwo--;
+            }
+        }
+
+        countOne = 0;
+        countTwo = 0;
+
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] == elOne) countOne++;
+            if (nums[i] == elTwo) countTwo++;
+        }
+
+        if (countOne > n) {
+            ans.push_back(elOne);
+        }
+
+        if (countTwo > n) {
+            ans.push_back(elTwo);
+        }
+
+        return ans;
+
+    };
+
+    return betterSolution();
+
+}

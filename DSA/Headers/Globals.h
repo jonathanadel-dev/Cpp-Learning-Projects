@@ -111,3 +111,4 @@ int numberOfSubarraysWithSumK(vector<int> nums, int k);
 
 // Hard array problems
 vector<vector<int>> pascalsTriangle(int n);
+vector<int> majorityElementTwo(vector<int> nums);
