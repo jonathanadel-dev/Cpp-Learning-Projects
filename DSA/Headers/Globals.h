@@ -113,3 +113,4 @@ int numberOfSubarraysWithSumK(vector<int> nums, int k);
 vector<vector<int>> pascalsTriangle(int n);
 vector<int> majorityElementTwo(vector<int> nums);
 vector<vector<int>> threeSum(vector<int> nums);
+vector<vector<int>> fourSum(vector<int> nums, int target);

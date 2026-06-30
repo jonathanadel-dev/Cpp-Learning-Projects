@@ -1,60 +1,40 @@
 #include <iostream>
-#include <cstring>
-using namespace std;
+#include <cstddef>
 
-struct student {
-    char name[20];
-    char major[20];
-    float GPA;
-    bool status;
-};
+typedef unsigned char* byte_pointer;
 
-void InputStudents(student* S, int n) {
-    for (int i = 0; i < n; i++) {
-        cout << "Enter data for student " << i + 1 << ":\n";
-        cout << "Enter Name: ";
-        cin >> S[i].name;
-        cout << "Enter Major: ";
-        cin >> S[i].major;
-        cout << "Enter GPA: ";
-        cin >> S[i].GPA;
+void show_bytes(byte_pointer start, size_t len) {
+    for (int i = 0; i < len; i++) {
+        printf(" %.2x", start[i]);
     }
+    printf("\n");
 }
 
-void UpdateStatus(student* S, int n) {
-    for (int i = 0; i < n; i++) {
-        bool goodGPA = S[i].GPA >= 3.5;
-        bool goodMajor = (strcmp(S[i].major, "Engineering") == 0 ||
-            strcmp(S[i].major, "Science") == 0);
-        S[i].status = goodGPA && goodMajor;
-        cout << "\t";
-    }
+void show_int(int x) {
+    show_bytes((byte_pointer)&x, sizeof(int));
 }
 
-void DisplayEligibleStudents(student* S, int n) {
-    cout << "Students eligible for scholarship are:\n";
-    for (int i = 0; i < n; i++) {
-        if (S[i].status) {
-            cout << "Name: " << S[i].name << "\n";
-            cout << "Major: " << S[i].major << "\n";
-            cout << "GPA: " << S[i].GPA << "\n";
-        }
-    }
+void show_float(float x) {
+    show_bytes((byte_pointer)&x, sizeof(float));
+}
+
+void show_pointer(void* x) {
+    show_bytes((byte_pointer)&x, sizeof(void*));
 }
 
 int main() {
-    int n;
-    cout << "Enter the number of students: ";
-    cin >> n;
+    int i = 12345;
+    float f = 12345.0f;
+    void* p = &i;
 
-    student* S = new student[n];
+    std::cout << "int: ";
+    show_int(i);
 
-    InputStudents(S, n);
-    UpdateStatus(S, n);
-    DisplayEligibleStudents(S, n);
+    std::cout << "float: ";
+    show_float(f);
 
-    delete[] S;
-    S = nullptr;
+    std::cout << "pointer: ";
+    show_pointer(p);
 
     return 0;
 }
