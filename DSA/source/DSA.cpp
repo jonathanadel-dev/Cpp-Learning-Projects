@@ -8,12 +8,8 @@ using namespace std;
 int main()
 {
 
-	vector<int> nums = { 3, 2, 3 };
-
-	vector<int> majs = majorityElementTwo(nums);
-
-	for (int i = 0; i < majs.size(); i++) {
-		cout << majs[i] << " ";
-	}
+	int x = 4, y = 4, z = 5;
+	int result = x ^ y ^ z;
+	cout << result;
 
 }

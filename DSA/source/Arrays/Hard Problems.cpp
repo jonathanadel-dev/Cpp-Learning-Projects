@@ -188,3 +188,63 @@ vector<vector<int>> fourSum(vector<int> nums, int target) {
 
     return ans;
 }
+
+
+// Longest subarray with sum k
+int longestSubarrayWithSumK(vector<int> nums, int k) {
+
+    int sum = 0, n = 0;
+    unordered_map<int, int> prefixSum;
+
+    for (int i = 0; i < nums.size(); i++) {
+
+        sum += nums[i];
+
+        if (sum == k) {
+            if (i + 1 > n) {
+                n = i + 1;
+            }
+        }
+
+        int rem = sum - k;
+        if (prefixSum.find(rem) != prefixSum.end()) {
+            if (i - prefixSum[rem] > n) {
+                n = i - prefixSum[rem];
+            }
+        }
+
+        if (prefixSum.find(sum) == prefixSum.end()) {
+            prefixSum[sum] = i;
+        }
+
+    }
+
+    return n;
+
+
+}
+
+
+// Count subarrays with given XOR k
+int countSubarraysWithGivenXORK(vector<int> nums, int k) {
+
+    int n = 0, sum = 0;
+    unordered_map<int, int> prefixSum;
+    prefixSum[0] = 1;
+
+    for (int i = 0; i < nums.size(); i++) {
+
+        sum = sum ^ nums[i];
+
+        int rem = sum ^ k;
+        if (prefixSum.find(rem) != prefixSum.end()) {
+            n += prefixSum[rem];
+        }
+
+        prefixSum[sum]++;
+
+    }
+
+    return n;
+
+}
