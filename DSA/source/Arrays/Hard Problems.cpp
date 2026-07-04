@@ -248,3 +248,34 @@ int countSubarraysWithGivenXORK(vector<int> nums, int k) {
     return n;
 
 }
+
+
+// Merge intervals
+vector<vector<int>> mergeIntervals(vector<vector<int>> intervals) {
+
+    sort(intervals.begin(), intervals.end());
+    vector<vector<int>> newIntervals;
+
+    for (int i = 0; i < intervals.size(); i++) {
+
+        if (i == 0) {
+            vector<int> temp = { intervals[i][0], intervals[i][1] };
+            newIntervals.push_back(temp);
+            continue;
+        }
+
+        if (intervals[i][0] <= newIntervals.back()[1]) {
+            if (intervals[i][1] > newIntervals.back()[1]) {
+                newIntervals.back()[1] = intervals[i][1];
+            }
+        }
+        else {
+            vector<int> temp = { intervals[i][0], intervals[i][1] };
+            newIntervals.push_back(temp);
+        }
+
+    }
+
+    return newIntervals;
+
+}

@@ -116,3 +116,4 @@ vector<vector<int>> threeSum(vector<int> nums);
 vector<vector<int>> fourSum(vector<int> nums, int target);
 int longestSubarrayWithSumK(vector<int> nums, int k);
 int countSubarraysWithGivenXORK(vector<int> nums, int k);
+vector<vector<int>> mergeIntervals(vector<vector<int>> nums);
