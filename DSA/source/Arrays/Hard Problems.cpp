@@ -279,3 +279,85 @@ vector<vector<int>> mergeIntervals(vector<vector<int>> intervals) {
     return newIntervals;
 
 }
+
+
+// Merge sorted array
+void mergeSortedArray(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+
+    if (n == 0) {
+        return;
+    }
+
+    if (m == 0) {
+        for (int i = 0; i < n; i++) {
+            nums1[i] = nums2[i];
+        }
+        return;
+    }
+
+    auto solutionOne = [&]() {
+
+        int index = 0;
+
+        while (index < n && index <= m - 1 && nums1[m - 1 - index] > nums2[index]) {
+
+            int temp = nums1[m - 1 - index];
+            nums1[m - 1 - index] = nums2[index];
+            nums2[index] = temp;
+
+            index++;
+
+        }
+
+        sort(nums1.begin(), nums1.begin() + m);
+        sort(nums2.begin(), nums2.end());
+
+        for (int i = m; i < m + n; i++) {
+            nums1[i] = nums2[i - m];
+        }
+
+    };
+
+    auto solutionTwo = [&]() {
+        
+        float gap = ceil((m + n) / 2);
+
+        while (true) {
+            int left = 0, right = left + gap;
+            while (right < m + n) {
+                if (left >= m) {
+                    if (nums2[left - m] > nums2[right - m]) {
+                        swap(nums2[left - m], nums2[right - m]);
+                    }
+                }
+                else {
+                    if (right >= m) {
+                        if (nums1[left] > nums2[right - m]) {
+                            swap(nums1[left], nums2[right - m]);
+                        }
+                    }
+                    else {
+                        if (nums1[left] > nums1[right]) {
+                            swap(nums1[left], nums1[right]);
+                        }
+                    }
+                }
+                left++; right++;
+            }
+            if (gap == 1) {
+                break;
+            }
+            else {
+                gap = ceil(gap / 2);
+            }
+        }
+
+        for (int i = m; i < m + n; i++) {
+            nums1[i] = nums2[i - m];
+        }
+
+    };
+
+    solutionOne();
+
+}

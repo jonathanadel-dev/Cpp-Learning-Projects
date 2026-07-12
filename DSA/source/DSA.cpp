@@ -8,8 +8,12 @@ using namespace std;
 int main()
 {
 
-	pair<int, int> nums = { 0, 1 };
+	//unsigned short n = 32768;
+	//signed short sn = (signed short) n;
 
-	cout << nums.first;
+
+	//cout << n << " " << sn;
+	unsigned u = 4294967295;
+	cout << u;
 
 }
