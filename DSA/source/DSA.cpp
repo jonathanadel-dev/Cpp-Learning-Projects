@@ -8,12 +8,12 @@ using namespace std;
 int main()
 {
 
-	//unsigned short n = 32768;
-	//signed short sn = (signed short) n;
+	vector<int> nums = { 2, 3, 3, 4, 5 };
 
+	vector<int> ans = findRepeatingAndMissingNumbers(nums);
 
-	//cout << n << " " << sn;
-	unsigned u = 4294967295;
-	cout << u;
+	for (int i = 0; i < ans.size(); i++) {
+		cout << ans[i] << " ";
+	}
 
 }

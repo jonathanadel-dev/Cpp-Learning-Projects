@@ -361,3 +361,27 @@ void mergeSortedArray(vector<int>& nums1, int m, vector<int>& nums2, int n) {
     solutionOne();
 
 }
+
+
+// Find the reapeating and missing numbers
+vector<int> findRepeatingAndMissingNumbers(vector<int> nums) {
+
+    int n = nums.size();
+    vector<int> ans = { -1, -1 }; // {repeating, missing}
+    sort(nums.begin(), nums.end());
+
+    if (nums[0] != 1) ans[1] = 1;
+    if (nums[n - 1] != n && ans[1] == -1) ans[1] = n;
+
+    for (int i = 1; i < n; i++) {
+        if (nums[i] == nums[i - 1]) {
+            ans[0] = nums[i];
+        }
+        else if (nums[i] - nums[i - 1] == 2) {
+            ans[1] = nums[i] - 1;
+        }
+    }
+
+    return ans;
+
+}
