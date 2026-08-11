@@ -8,12 +8,12 @@ using namespace std;
 int main()
 {
 
-	vector<int> nums = { 2, 3, 3, 4, 5 };
+	int nums[8] = { 6, 3, 8, 5, 2, 7, 1, 4 };
 
-	vector<int> ans = findRepeatingAndMissingNumbers(nums);
+	//mergeSortTest(nums, 0, 7);
 
-	for (int i = 0; i < ans.size(); i++) {
-		cout << ans[i] << " ";
+	for (int i = 0; i < 8; i++) {
+		cout << nums[i] << " ";
 	}
 
 }

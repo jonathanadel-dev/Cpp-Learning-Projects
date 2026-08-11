@@ -422,3 +422,73 @@ long long mergeSort(vector<int>&arr, int low, int high) {
 long long countInversions(vector<int>&arr) {
     return mergeSort(arr, 0, arr.size() - 1);
 }
+
+
+// Reverse pairs
+int reversePairs(vector<int> nums) {
+    int count = 0;
+
+    auto mergingArrays = [&](vector<int>& nums, int left, int mid, int right) {
+
+        vector<int> temp;
+        int low = left, high = mid + 1;
+        while (low <= mid && high <= right) {
+
+            if (nums[low] <= nums[high]) {
+                temp.push_back(nums[low]);
+                low++;
+            }
+            else {
+                temp.push_back(nums[high]);
+                high++;
+            }
+        }
+
+        while (low <= mid) {
+            temp.push_back(nums[low]);
+            low++;
+        }
+
+        while (high <= right) {
+            temp.push_back(nums[high]);
+            high++;
+        }
+
+        for (int i = left; i <= right; i++) {
+            nums[i] = temp[i - left];
+        }
+
+        };
+
+
+    auto countPairs = [&](vector<int>& nums, int left, int mid, int right) {
+
+        int high = mid + 1;
+        for (int i = left; i <= mid; i++) {
+            while (high <= right && nums[i] > 2LL * nums[high]) {
+                high++;
+            }
+            count += (high - (mid + 1));
+        }
+
+        };
+
+
+    auto mergeSort = [&](vector<int>& nums, int left, int right) {
+
+        if (left >= right) return;
+
+        int mid = (right + left) / 2;
+        mergeSort(nums, left, mid);
+        mergeSort(nums, mid + 1, right);
+        countPairs(nums, left, mid, right);
+        mergingArrays(nums, left, mid, right);
+
+        };
+
+
+    mergeSort(nums, 0, nums.size() - 1);
+
+
+    return count;
+}

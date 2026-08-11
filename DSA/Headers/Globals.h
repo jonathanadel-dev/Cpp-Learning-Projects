@@ -120,3 +120,4 @@ vector<vector<int>> mergeIntervals(vector<vector<int>> nums);
 void mergeSortedArray(vector<int>& nums1, int m, vector<int>& nums2, int n);
 vector<int> findRepeatingAndMissingNumbers(vector<int> nums);
 int countInversions(vector<int> nums);
+int reversePairs(vector<int> nums);
