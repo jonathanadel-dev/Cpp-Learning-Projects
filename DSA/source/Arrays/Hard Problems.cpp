@@ -492,3 +492,24 @@ int reversePairs(vector<int> nums) {
 
     return count;
 }
+
+
+// Maximum product
+int maximumProduct(vector<int> nums) {
+    int maximum = nums[0], minimum = nums[0], result = nums[0];
+
+    for (int i = 1; i < nums.size(); i++) {
+
+        if (nums[i] < 0) {
+            swap(maximum, minimum);
+        }
+
+        maximum = max(nums[i], nums[i] * maximum);
+        minimum = min(nums[i], nums[i] * minimum);
+
+        result = max(result, maximum);
+
+    }
+
+    return result;
+}
