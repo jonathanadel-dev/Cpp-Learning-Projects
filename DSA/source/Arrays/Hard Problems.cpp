@@ -5,6 +5,7 @@
 #include <queue>
 #include <list>
 #include <set>
+#include <functional>
 #include <algorithm>
 using namespace std;
 
@@ -474,7 +475,7 @@ int reversePairs(vector<int> nums) {
         };
 
 
-    auto mergeSort = [&](vector<int>& nums, int left, int right) {
+    function<void(vector<int>&, int, int)> mergeSort = [&](vector<int>& nums, int left, int right) {
 
         if (left >= right) return;
 
