@@ -8,8 +8,12 @@ using namespace std;
 int main()
 {
 
-	vector<int> nums = { 2, 3, 6, 7, 8, 8, 11, 11, 11, 12 };
+	vector<int> nums = { 2, 4, 6, 8, 10, 12, 14 };
 
-	cout << upperBound(nums, 11);
+	vector<int> ans = findFloorAndCeil(nums, 1);
+
+	for (int i = 0; i < ans.size(); i++) {
+		cout << ans[i] << " ";
+	}
 
 }

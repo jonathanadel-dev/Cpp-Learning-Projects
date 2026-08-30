@@ -138,3 +138,34 @@ int searchInsert(vector<int>& nums, int target) {
 	return ans;
 
 }
+
+
+// Find floor and ceil
+vector<int> findFloorAndCeil(vector<int>& nums, int target) {
+
+	vector<int> ans;
+	int n = nums.size();
+	int low = 0, high = n - 1, floorIndex = -1, ceilIndex = -1;
+
+	while (high >= low) {
+		int middle = (high + low) / 2;
+		if (nums[middle] < target) {
+			floorIndex = middle;
+			low = middle + 1;
+		} else if (nums[middle] > target) {
+			ceilIndex = middle;
+			high = middle - 1;
+		}
+		else {
+			floorIndex = middle;
+			ceilIndex = middle;
+			break;
+		}
+	}
+
+	ans.push_back(floorIndex == -1 ? -1 : nums[floorIndex]);
+	ans.push_back(ceilIndex == -1 ? -1 : nums[ceilIndex]);
+
+	return ans;
+
+}
