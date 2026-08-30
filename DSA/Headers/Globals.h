@@ -128,3 +128,4 @@ int maximumProduct(vector<int> nums);
 int binarySearch(vector<int>& nums, int target);
 int lowerBound(vector<int>& nums, int target);
 int upperBound(vector<int>& nums, int target);
+int searchInsert(vector<int>& nums, int target);

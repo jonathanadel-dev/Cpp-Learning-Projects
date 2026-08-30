@@ -116,3 +116,25 @@ int upperBound(vector<int>& nums, int target) {
 	return ans;
 
 }
+
+
+// Search insert
+int searchInsert(vector<int>& nums, int target) {
+
+	int n = nums.size();
+	int low = 0, high = n - 1, ans = n;
+
+	while (low <= high) {
+		int middle = (high + low) / 2;
+		if (nums[middle] >= target) {
+			ans = middle;
+			high = middle - 1;
+		}
+		else {
+			low = middle + 1;
+		}
+	}
+
+	return ans;
+
+}
