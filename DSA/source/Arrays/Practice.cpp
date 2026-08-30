@@ -130,4 +130,6 @@ int trappingRainWater(vector<int>& height) {
         return area;
     };
 
+    return theSolution();
+
 }

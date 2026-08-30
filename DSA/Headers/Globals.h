@@ -122,3 +122,9 @@ vector<int> findRepeatingAndMissingNumbers(vector<int> nums);
 int countInversions(vector<int> nums);
 int reversePairs(vector<int> nums);
 int maximumProduct(vector<int> nums);
+
+
+// Binary search
+int binarySearch(vector<int>& nums, int target);
+int lowerBound(vector<int>& nums, int target);
+int upperBound(vector<int>& nums, int target);
