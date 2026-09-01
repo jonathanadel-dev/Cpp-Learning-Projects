@@ -169,3 +169,40 @@ vector<int> findFloorAndCeil(vector<int>& nums, int target) {
 	return ans;
 
 }
+
+
+// Search first and last occurences of an element
+vector<int> searchRange(vector<int>& nums, int target) {
+
+	vector<int> ans;
+	int n = nums.size();
+	int startingIndex = -1, endingIndex = -1;
+
+	function<void(int, int)> binarySearch = [&](int low, int high) {
+
+		if (low > high) return;
+
+		int middle = (low + high) / 2;
+		if (nums[middle] > target) {
+			binarySearch(low, middle - 1);
+		}
+		else if (nums[middle] < target) {
+			binarySearch(middle + 1, high);
+		}
+		else {
+			startingIndex = startingIndex == -1 ? middle : min(middle, startingIndex);
+			endingIndex = endingIndex == -1 ? middle : max(middle, endingIndex);
+			binarySearch(low, startingIndex - 1);
+			binarySearch(endingIndex + 1, high);
+		}
+
+		};
+
+	binarySearch(0, n - 1);
+
+	ans.push_back(startingIndex);
+	ans.push_back(endingIndex);
+
+	return ans;
+
+}
