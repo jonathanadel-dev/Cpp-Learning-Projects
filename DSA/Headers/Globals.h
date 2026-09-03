@@ -132,3 +132,4 @@ int searchInsert(vector<int>& nums, int target);
 vector<int> findFloorAndCeil(vector<int>& nums, int target);
 vector<int> searchRange(vector<int>& nums, int target);
 int countOccurences(vector<int>& nums, int target);
+int searchInRotatedSortedArray(vector<int>& nums, int target);

@@ -249,3 +249,43 @@ int countOccurences(vector<int>& nums, int target) {
 	return count;
 
 }
+
+
+int searchInRotatedSortedArray(vector<int>& nums, int target) {
+
+	int n = nums.size();
+	int ans = -1;
+
+	function<void(int, int)> binarySearch = [&](int low, int high) {
+
+		if (low > high) return;
+		int middle = (low + high) / 2;
+		if (nums[middle] == target) {
+			ans = middle;
+			return;
+		}
+
+		if (nums[low] <= nums[middle]) {
+			if (target >= nums[low] && target < nums[middle]) {
+				return binarySearch(low, middle - 1);
+			}
+			else {
+				return binarySearch(middle + 1, high);
+			}
+		}
+		else {
+			if (target > nums[middle] && target <= nums[high]) {
+				return binarySearch(middle + 1, high);
+			}
+			else {
+				return binarySearch(low, middle - 1);
+			}
+		}
+
+		};
+
+	binarySearch(0, n - 1);
+
+	return ans;
+
+}
