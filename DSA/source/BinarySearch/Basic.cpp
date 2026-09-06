@@ -251,6 +251,7 @@ int countOccurences(vector<int>& nums, int target) {
 }
 
 
+// Search in rotated sorted array
 int searchInRotatedSortedArray(vector<int>& nums, int target) {
 
 	int n = nums.size();
@@ -287,5 +288,55 @@ int searchInRotatedSortedArray(vector<int>& nums, int target) {
 	binarySearch(0, n - 1);
 
 	return ans;
+
+}
+
+
+// Search in rotated sorted array II
+bool searchInRotatedSortedArrayTwo(vector<int>& nums, int target) {
+
+	int n = nums.size();
+	int low = 0, high = n - 1;
+
+	while (low <= high) {
+		int middle = (low + high) / 2;
+		if (nums[middle] == target) {
+			return true;
+		}
+		else {
+
+			while (nums[middle] == nums[low] && nums[middle] == nums[high]) {
+				if (low < middle) {
+					low++;
+				}
+				if (high > middle) {
+					high--;
+				}
+				if (low == middle && middle == high) {
+					return false;
+				}
+			}
+
+			if (nums[low] <= nums[middle]) {
+				if (target >= nums[low] && target < nums[middle]) {
+					high = middle - 1;
+				}
+				else {
+					low = middle + 1;
+				}
+			}
+			else {
+				if (target > nums[middle] && target <= nums[high]) {
+					low = middle + 1;
+				}
+				else {
+					high = middle - 1;
+				}
+			}
+
+		}
+	}
+
+	return false;
 
 }
