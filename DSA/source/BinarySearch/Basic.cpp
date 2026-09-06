@@ -340,3 +340,21 @@ bool searchInRotatedSortedArrayTwo(vector<int>& nums, int target) {
 	return false;
 
 }
+
+
+// Find minimum in rotated sorted array
+int findMinimumInRotatedSortedArray(vector<int>& nums) {
+	int n = nums.size();
+	int low = 0, high = n - 1;
+
+	while (low < high) {
+		int middle = (low + high) / 2;
+		if (nums[middle] > nums[high]) {
+			low = middle + 1;
+		}
+		else {
+			high = middle;
+		}
+	}
+	return nums[low];
+}
